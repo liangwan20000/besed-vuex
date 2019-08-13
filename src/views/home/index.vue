@@ -11,7 +11,7 @@
             <!-- 频道 -->
             <van-tabs v-model="activeTab">
                 <div slot="nav-right" class="bigbox">
-                    <van-icon class="wap-nav" name="wap-nav" @click="showPopup"></van-icon>
+                    <van-icon class="wap-nav" name="wap-nav"></van-icon>
                 </div>
 
                 <van-tab v-for="item in channels"
@@ -59,12 +59,7 @@
         v-model="showAction">
         </complaint>
         <!-- 弹出频道列表 -->
-        <van-popup
-        v-model="show"
-        position="left"
-        :style="{ height: '100%', width: '80%' }"
-        >内容</van-popup>
-
+        <homeChannel></homeChannel>
     </div>
 </template>
 
@@ -77,11 +72,14 @@ import { getArticles } from '../../api/article.js';
 import '@/filters/index.js';
 // 引入投诉模块
 import complaint from './components/Complaint.vue';
+// 引入管理频道
+import homeChannel from './components/HomeChannel.vue';
 export default {
     name: 'Home',
     // 模板
     components: {
-        complaint
+        complaint,
+        homeChannel
     },
     // 数据
     data () {
@@ -89,7 +87,7 @@ export default {
             // 输入框内容
             value: '',
             // 频道弹窗开关
-            show: false,
+            // show: false,
             // 保存当前要投诉的对象
             currentArticle: {},
             // 控制投诉弹窗显示隐藏
@@ -113,9 +111,9 @@ export default {
     // 自定义方法
     methods: {
         // 控制频道弹窗
-        showPopup () {
-            this.show = true;
-        },
+        // showPopup () {
+        // this.show = true;
+        // },
         // 获取频道列表
         async loadChannels () {
             try {

@@ -6,7 +6,7 @@ import store from './store/index.js';
 // 引入vue-function-api
 import { plugin } from 'vue-function-api';
 // 引入布局组件
-import Vant, { Lazyload, Dialog, Popup, Search } from 'vant';
+import Vant, { Lazyload, Dialog, Popup, Search, Grid, GridItem } from 'vant';
 // 引入布局组件样式
 import 'vant/lib/index.css';
 // 引入rem适配组件
@@ -35,6 +35,8 @@ Vue.use(Dialog);
 Vue.use(Popup);
 // 挂载头部输入框
 Vue.use(Search);
+// 挂载频道宫格
+Vue.use(Grid).use(GridItem);
 
 // 给vue实例添加延时器
 Vue.prototype.$sleep = (time) => {
