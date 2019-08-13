@@ -1,7 +1,8 @@
 <template>
     <!-- 弹出频道列表 -->
     <van-popup
-    v-model="show"
+    :value="value"
+    @input="$emit('input', $event)"
     position="bottom"
     :style="{ height: '90%', width: '100%' }">
         <!-- 已有频道列表 -->
@@ -15,12 +16,18 @@
                 <!-- 按钮 -->
                 <div>
                     <van-button
+                        v-show="!showClose"
+                        @click="showClose=true"
                         type="danger"
                         plain
                         size="mini"
                     >
                         编辑
                     </van-button>
+                    <div v-show="showClose">
+                        <van-button size="mini" plain type="danger" class="title">全部删除</van-button>&nbsp;
+                        <van-button size="mini" plain type="danger" class="title" @click="showClose = false">完成</van-button>
+                    </div>
                 </div>
             </div>
             <!-- 展示已有频道 -->
@@ -30,7 +37,7 @@
                     :key="value"
                     text="文字">
                     <span class="text">文字</span>
-                    <van-icon class="close-icon" name="close" />
+                    <van-icon class="close-icon" name="close" v-show="showClose"/>
                 </van-grid-item>
             </van-grid>
         </div>
@@ -61,9 +68,11 @@
 
 <script>
 export default {
+    name: 'show',
+    props: ['value'],
     data () {
         return {
-            show: true
+            showClose: false
         };
     }
 };

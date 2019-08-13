@@ -83,6 +83,8 @@ export default {
             this.$router.push({ name: 'layout' });
             // 关闭登录等待
             this.btnLoading = false;
+            // 提示登陆成功
+            this.$toast.success('登录成功');
         }
     },
     // 创建实例前生命周期函数

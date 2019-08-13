@@ -11,7 +11,7 @@
             <!-- 频道 -->
             <van-tabs v-model="activeTab">
                 <div slot="nav-right" class="bigbox">
-                    <van-icon class="wap-nav" name="wap-nav"></van-icon>
+                    <van-icon class="wap-nav" name="wap-nav"  @click="showChannel = true"></van-icon>
                 </div>
 
                 <van-tab v-for="item in channels"
@@ -59,7 +59,7 @@
         v-model="showAction">
         </complaint>
         <!-- 弹出频道列表 -->
-        <homeChannel></homeChannel>
+        <homeChannel v-model="showChannel"></homeChannel>
     </div>
 </template>
 
@@ -87,7 +87,7 @@ export default {
             // 输入框内容
             value: '',
             // 频道弹窗开关
-            // show: false,
+            showChannel: false,
             // 保存当前要投诉的对象
             currentArticle: {},
             // 控制投诉弹窗显示隐藏
